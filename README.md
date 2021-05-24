@@ -2,8 +2,6 @@
 
 A clone website for property listings using Django. 
 
-Once repo is clone follow the steps below for installation.
-
 ## Installation 
 
 1. Create a virtual environment using venv
