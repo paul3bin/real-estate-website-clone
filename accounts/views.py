@@ -1,8 +1,9 @@
-from django.shortcuts import render, redirect
-from django.contrib import messages, auth
+from django.contrib import auth, messages
 from django.contrib.auth.models import User
+from django.shortcuts import redirect, render
 
 from contacts.models import Contact
+
 
 def login(request):
     if request.method == 'POST':
