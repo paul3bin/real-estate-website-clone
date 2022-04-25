@@ -25,7 +25,7 @@ def contact(request):
                 messages.error(
                     request, "You have already made an inquiry for this listing"
                 )
-                return redirect("/listing/" + listing_id)
+                return redirect("/listings/" + listing_id)
 
         contact = Contact(
             listing=listing,
@@ -43,4 +43,4 @@ def contact(request):
             request,
             "Your enquiry has been submitted, a realtor will get back to you soon!",
         )
-        return redirect("/listing/" + listing_id)
+        return redirect("/listings/" + listing_id)
