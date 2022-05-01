@@ -1,4 +1,5 @@
 {% load static %}
+<!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
   <div class="container">
     <a class="navbar-brand" href="{% url 'index' %}">
@@ -15,27 +16,30 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <ul class="navbar-nav">
         <li 
-        {% if '/' == request.path %}
-          class="nav-item active mr-3"
-        {% else %}
-          class="nav-item mr-3"
-        {% endif %}>
+            {% if '/' == request.path %}
+                class="nav-item active mr-3"
+            {% else %}
+                class="nav-item mr-3"
+            {% endif %}
+        >
           <a class="nav-link" href="{% url 'index' %}">Home</a>
         </li>
-        <li 
-        {% if 'about' in request.path %}
-          class="nav-item active mr-3"
-        {% else %}
-          class="nav-item mr-3"
-        {% endif %}>
+        <<li 
+            {% if 'about' in request.path %}
+                class="nav-item active mr-3"
+            {% else %}
+                class="nav-item mr-3"
+            {% endif %}
+        >
           <a class="nav-link" href="{% url 'about' %}">About</a>
         </li>
         <li 
-        {% if 'listing' in request.path %}
-          class="nav-item active mr-3"
-        {% else %}
-          class="nav-item mr-3"
-        {% endif %}>
+            {% if 'listing' in request.path %}
+                class="nav-item active mr-3"
+            {% else %}
+                class="nav-item mr-3"
+            {% endif %}
+        >
           <a class="nav-link" href="{% url 'listings' %}">Featured Listings</a>
         </li>
       </ul>
@@ -49,7 +53,7 @@
             class="nav-item mr-3"
           {% endif %}>
             <a class="nav-link" href="{% url 'dashboard' %}">
-              Welcome, {{user.username}} (Dashboard)
+              Welcome, {{user.first_name}} (Dashboard)
             </a>
           </li>
           <li class="nav-item mr-3">
@@ -63,25 +67,28 @@
           </li>
         {% else %}
           <li 
-          {% if 'register' in request.path %}
-            class="nav-item active mr-3"
-          {% else %}
-            class="nav-item mr-3"
-          {% endif %}>
+              {% if 'register' in request.path %}
+                  class="nav-item active mr-3"
+              {% else %}
+                  class="nav-item mr-3"
+              {% endif %}
+          >
             <a class="nav-link" href="{% url 'register' %}">
               <i class="fas fa-user-plus"></i> Register</a
             >
           </li>
           <li 
-          {% if 'login' in request.path %}
-            class="nav-item active mr-3"
-          {% else %}
-            class="nav-item mr-3"
-          {% endif %}>
+              {% if 'login' in request.path %}
+                  class="nav-item active mr-3"
+              {% else %}
+                  class="nav-item mr-3"
+              {% endif %}
+          >
             <a class="nav-link" href="{% url 'login' %}">
               <i class="fas fa-sign-in-alt"></i>
 
-              Login</a>
+              Login</a
+            >
           </li>
         {% endif %}
       </ul>

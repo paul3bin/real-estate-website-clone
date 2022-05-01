@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 import os
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 
 from decouple import config
 from django.contrib.messages import constants as messages
@@ -27,9 +27,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config("DEBUG", cast=bool)
 
-ALLOWED_HOSTS = [config("ALLOWED_HOSTS")]
+ALLOWED_HOSTS = ["raspberrypi.local", "192.168.0.100", "localhost", "rpi"]
 
 
 # Application definition
@@ -86,11 +86,11 @@ WSGI_APPLICATION = "btre.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": config("NAME"),
-        "USER": config("USER"),
-        "PASSWORD": config("PASSWORD"),
-        "HOST": config("HOST"),
-        "PORT": config("PORT"),
+        "NAME": config("DATABASE"),
+        "USER": config("DB_USER"),
+        "PASSWORD": config("DB_PASSWORD"),
+        "HOST": config("DB_HOST"),
+        "PORT": config("DB_PORT"),
     }
 }
 
@@ -119,7 +119,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Asia/Kolkata"
 
 USE_I18N = True
 
@@ -133,18 +133,34 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATIC_URL = "/static/"
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "btre/static"),
-]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "btre/static")]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# Media folder settings
+
+# Media Folder Settings
+
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+# MEDIA_ROOT = PureWindowsPath('\\raspberrypi\nas\files\project_media\btre').drive
 MEDIA_URL = "/media/"
 
-# Message settings
-MESSAGE_TAGS = {messages.ERROR: "danger"}
+
+# Messages settings
+MESSAGE_TAGS = {
+    messages.ERROR: "danger",
+}
+
+
+# Email settings
+EMAIL_HOST = config("EMAIL_HOST")
+EMAIL_PORT = config("EMAIL_PORT")
+EMAIL_HOST_USER = config("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
+EMAIL_USE_TLS = config("EMAIL_USE_TLS")
+EMAIL_USE_SSL = config("EMAIL_USE_SSL")
+EMAIL_TIMEOUT = config("EMAIL_TIMEOUT")
+EMAIL_SSL_KEYFILE = config("EMAIL_SSL_KEYFILE")
+EMAIL_SSL_CERTFILE = config("EMAIL_SSL_CERTFILE")

@@ -10,12 +10,11 @@
 
 a:link,
 a:visited {
-  color: #10284e;
+  color: #84adf0;
 }
 
 div.breadcrumbs {
-  background: #30caa0;
-  color: #10284e;
+  background: #059871;
 }
 
 div.breadcrumbs a {
@@ -25,14 +24,5 @@ div.breadcrumbs a {
 .module h2,
 .module caption,
 .inline-group h2 {
-  background: #30caa0;
-}
-
-.button,
-input[type="submit"],
-input[type="button"],
-.submit-row input,
-a.button {
-  background: #10284e;
-  color: #fff;
+  background: #059871;
 }

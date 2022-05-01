@@ -12,19 +12,22 @@ def index(request):
     page = request.GET.get("page")
     paged_listings = paginator.get_page(page)
 
-    return render(
-        request, "listings/listings.html", context={"listings": paged_listings}
-    )
+    context = {"listings": paged_listings}
+
+    return render(request, "listings/listings.html", context=context)
 
 
 def listing(request, listing_id):
     listing = get_object_or_404(Listing, pk=listing_id)
-    return render(request, "listings/listing.html", context={"listing": listing})
+
+    context = {"listing": listing}
+
+    return render(request, "listings/listing.html", context=context)
 
 
 def search(request):
 
-    queryset_list = Listing.objects.order_by("-list_date").filter(is_published=True)
+    queryset_list = Listing.objects.order_by("-list_date")
 
     if "keywords" in request.GET:
         keywords = request.GET["keywords"]
@@ -51,14 +54,12 @@ def search(request):
         if price:
             queryset_list = queryset_list.filter(price__lte=price)
 
-    return render(
-        request,
-        "listings/search.html",
-        context={
-            "state_choices": state_choices,
-            "bedroom_choices": bedroom_choices,
-            "price_choices": price_choices,
-            "listings": queryset_list,
-            "values": request.GET,
-        },
-    )
+    context = {
+        "state_choices": state_choices,
+        "bedroom_choices": bedroom_choices,
+        "price_choices": price_choices,
+        "listings": queryset_list,
+        'values': request.GET,
+    }
+
+    return render(request, "listings/search.html", context=context)
