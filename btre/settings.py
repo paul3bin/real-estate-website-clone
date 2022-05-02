@@ -29,7 +29,7 @@ SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DEBUG", cast=bool)
 
-ALLOWED_HOSTS = ["raspberrypi.local", "192.168.0.100", "localhost", "rpi"]
+ALLOWED_HOSTS = ["rpi.local", "192.168.0.100", "localhost", "rpi"]
 
 
 # Application definition
@@ -144,7 +144,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Media Folder Settings
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-# MEDIA_ROOT = PureWindowsPath('\\raspberrypi\nas\files\project_media\btre').drive
 MEDIA_URL = "/media/"
 
 
