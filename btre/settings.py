@@ -142,8 +142,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 # Media Folder Settings
-# MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-MEDIA_ROOT = PureWindowsPath(config("MEDIA_URL", cast=str)).drive
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
 
 
