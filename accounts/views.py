@@ -1,8 +1,7 @@
+from contacts.models import Contact
 from django.contrib import auth, messages
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
-
-from contacts.models import Contact
 
 
 def login(request):
