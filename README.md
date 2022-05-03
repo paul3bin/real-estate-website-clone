@@ -23,14 +23,14 @@ A clone website for property listings using Django.
 
 ## Running using Docker
 
-1. Use following commands to run
+1. Commands to run using docker commands
 ```bash 
   docker build -t your_custom_container_name .
   docker run -d --restart=unless-stopped -p 8000:8000 --name=your_custom_container_name your_custom_container_name
   docker logs -f your_custom_container_name
 ```
 
-1. Else for MacOS or Linux users use:
+2. For builing Docker image and container using shell script which is present in the repo:
 ```bash 
   sudo bash build-image.sh
 ```
