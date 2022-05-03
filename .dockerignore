@@ -2,3 +2,4 @@ venv
 btre_resources
 static
 __pycache__/
+build-image.sh
